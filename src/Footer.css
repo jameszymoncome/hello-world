@@ -1,0 +1,22 @@
+/* src/Footer.css */
+.footer {
+  background-color: #870400;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0; /* Ensure the footer starts from the left edge */
+  width: 100%;
+  box-sizing: border-box;
+  height: 50px; /* Adjust height as needed */
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 10px;
+    height: auto; /* Adjust height to fit content on smaller screens */
+  }
+}

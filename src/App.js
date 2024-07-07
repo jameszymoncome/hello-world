@@ -1,17 +1,26 @@
 // src/App.js
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './Login';
 import StartPage from './StartPage';
-import logo from './/images/logo.png'
+import CustomerOptionPage from './CustomerOptionPage'; // Import the new page
+import logo from './images/logo.png';
 import './App.css';
-import customerLogo from './/images/customer-logo.png'; // Adjust path as needed
-import adminLogo from './/images/admin-logo.png'; // Adjust path as needed
+import customerLogo from './images/customer-logo.png'; // Adjust path as needed
+import adminLogo from './images/admin-logo.png'; // Adjust path as needed
+import StudentLogin from './StudentLogin';
+import StudentLogin2 from './StudentLogin2';
+import EmployeeLogin from './EmployeeLogin';
+import EmployeeLogin2 from './EmployeeLogin2';
+import OthersLogin from './Otherslogin';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [showStartPage, setShowStartPage] = useState(true);
   const [showLoginOptions, setShowLoginOptions] = useState(false);
+
+  const navigate = useNavigate(); // Define the navigate hook here
 
   const handleLogin = (username) => {
     setIsAuthenticated(true);
@@ -29,14 +38,11 @@ function App() {
   };
 
   const handleCustomerClick = () => {
-    // Handle customer button click
-    // For simplicity, let's navigate to the login page directly
-    setShowLoginOptions(false);
+    navigate('/customer-options');
   };
 
   const handleAdminClick = () => {
-    // Handle admin button click
-    // Add logic for admin-related actions
+    navigate('/admin-options'); // Assuming you have an admin options page
   };
 
   return (
@@ -51,8 +57,7 @@ function App() {
       ) : showLoginOptions ? (
         <div className="login-options-container">
           <img src={logo} alt="Logo" className="logo" />
-          <h2>Camarines Norte State College
-          Customer Feedback System</h2>
+          <h2>Camarines Norte State College Customer Feedback System</h2>
           <div className="button-container">
             <button onClick={handleCustomerClick}>
               <img src={customerLogo} alt="Customer Logo" />
@@ -71,4 +76,22 @@ function App() {
   );
 }
 
-export default App;
+function AppWithRouter() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/customer-options" element={<CustomerOptionPage />} />
+        <Route path="/student-signup" element={<StudentLogin />} />
+        <Route path="/employee-signup" element={<EmployeeLogin />} />
+        <Route path="/others-signup" element={<CustomerOptionPage />} />
+        <Route path="/student-login" element={<StudentLogin2 />} />
+        <Route path="/employee-login" element={<EmployeeLogin2 />} />
+        <Route path="/others-login" element={<OthersLogin />} />
+        {/* Add other routes here as needed */}
+      </Routes>
+    </Router>
+  );
+}
+
+export default AppWithRouter;

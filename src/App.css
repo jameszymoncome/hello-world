@@ -9,6 +9,14 @@ body {
   height: 100vh;
 }
 
+/* src/index.css or src/App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 .App {
   text-align: center;
 }
@@ -55,4 +63,27 @@ body {
   cursor: pointer;
   font-size: 16px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .signup_btn {
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .signup_btn {
+    padding: 8px 12px; /* Adjust padding for smaller screens */
+    font-size: 12px; /* Adjust font size for smaller screens */
+  }
 }

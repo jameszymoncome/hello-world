@@ -1,0 +1,65 @@
+/* src/CustomerOptionPage.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .CustomerOptionPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content h1 {
+    margin-bottom: 10px;
+  }
+  
+  .CustomerOptionPage button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .CustomerOptionPage button:hover {
+    background-color: #661A02; /* Slightly darker shade for hover */
+  }
+  
+  .logo {
+    width: 150px; /* Adjust the size as needed */
+    margin-bottom: 20px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Add gap between the buttons */
+  }
+  
+  .button-container button img {
+    width: 90px; /* Adjust size as needed */
+    height: 90px; /* Adjust size as needed */
+    background-color: #fff;
+    color: black;
+    border-radius: 50%; /* Make it a circle */
+  }
+  
