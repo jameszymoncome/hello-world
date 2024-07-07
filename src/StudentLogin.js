@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
+  const [department, setDepartment] = useState('');
   const [password, setPassword] = useState('');
+  const [conpassword, setConspassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,25 +40,25 @@ function Login({ onLogin }) {
         <div className='form-group'>
           <label>Department:</label>
           <input
+            type="text"
+            value={department}
+            onChange={(e) => setDepartment(e.target.value)}
+          />
+        </div>
+        <div className='form-group'>
+          <label>Password:</label>
+          <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className='form-group'>
-          <label>Password:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className='form-group'>
           <label>Confirm Password:</label>
           <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="password"
+            value={conpassword}
+            onChange={(e) => setConspassword(e.target.value)}
           />
         </div>
       </form>
