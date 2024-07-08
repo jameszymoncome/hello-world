@@ -1,4 +1,3 @@
-// src/Otherslogin.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -13,15 +12,28 @@ function OthersLogin({ onLogin }) {
   const [suggestions, setSuggestions] = useState([]);
   const [type, setType] = useState('');
 
-  const navigate = useNavigate(); // Correct import and usage
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (username === 'user') {
-      onLogin(username);
-      navigate('/agency-instruct'); // Navigate after successful login
-    } else {
-      alert('Invalid credentials');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/login-others', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, address, type })
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.message);
+        onLogin(username); // Call the onLogin prop to handle successful login
+        navigate('/agency-instruct'); // Navigate after successful login
+      } else {
+        alert(data.error || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
   };
 
@@ -38,10 +50,6 @@ function OthersLogin({ onLogin }) {
   const handleSuggestionClick = (suggestion) => {
     setAddress(suggestion.display_name);
     setSuggestions([]);
-  };
-
-  const handleLoginClick = () => {
-    navigate('/agency-instruct'); // Navigate to the appropriate route
   };
 
   return (
@@ -90,14 +98,14 @@ function OthersLogin({ onLogin }) {
                 onChange={(e) => setType(e.target.value)}
               >
                 <option value="">Select Type</option>
-                <option value="type1">Agency</option>
-                <option value="type2">Participant</option>
-                <option value="type3">Client (Research)</option>
+                <option value="Agency">Agency</option>
+                <option value="Participant">Participant</option>
+                <option value="Client">Client (Research)</option>
                 {/* Add more options as needed */}
               </select>
             </div>
             <div className='button_holder'>
-              <button onClick={handleLoginClick}>Login</button>
+              <button type="submit">Login</button>
             </div>
           </form>
           <h4 className='or_lbl'><Link to="/customer-options">Back</Link></h4>
