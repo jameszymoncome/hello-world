@@ -1,5 +1,6 @@
 // src/Otherslogin.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,10 +13,13 @@ function OthersLogin({ onLogin }) {
   const [suggestions, setSuggestions] = useState([]);
   const [type, setType] = useState('');
 
+  const navigate = useNavigate(); // Correct import and usage
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username === 'user' && address === 'pass') {
+    if (username === 'user') {
       onLogin(username);
+      navigate('/agency-instruct'); // Navigate after successful login
     } else {
       alert('Invalid credentials');
     }
@@ -34,6 +38,10 @@ function OthersLogin({ onLogin }) {
   const handleSuggestionClick = (suggestion) => {
     setAddress(suggestion.display_name);
     setSuggestions([]);
+  };
+
+  const handleLoginClick = () => {
+    navigate('/agency-instruct'); // Navigate to the appropriate route
   };
 
   return (
@@ -89,7 +97,7 @@ function OthersLogin({ onLogin }) {
               </select>
             </div>
             <div className='button_holder'>
-              <button type="submit">Login</button>
+              <button onClick={handleLoginClick}>Login</button>
             </div>
           </form>
           <h4 className='or_lbl'><Link to="/customer-options">Back</Link></h4>

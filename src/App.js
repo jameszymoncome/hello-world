@@ -13,6 +13,7 @@ import StudentLogin2 from './StudentLogin2';
 import EmployeeLogin from './EmployeeLogin';
 import EmployeeLogin2 from './EmployeeLogin2';
 import OthersLogin from './Otherslogin';
+import AgencyInstuct from './AgencyInstruct';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -88,6 +89,7 @@ function AppWithRouter() {
         <Route path="/student-login" element={<StudentLogin2 />} />
         <Route path="/employee-login" element={<EmployeeLogin2 />} />
         <Route path="/others-login" element={<OthersLogin />} />
+        <Route path="/agency-instruct" element={<AgencyInstuct />} />
         {/* Add other routes here as needed */}
       </Routes>
     </Router>
