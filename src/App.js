@@ -14,6 +14,8 @@ import EmployeeLogin from './EmployeeLogin';
 import EmployeeLogin2 from './EmployeeLogin2';
 import OthersLogin from './Otherslogin';
 import AgencyInstuct from './AgencyInstruct';
+import StudentInstruct from './StudentInterface/StudentInstruct';
+import SelectOffice from './StudentInterface/SelectOffice';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -59,6 +61,7 @@ function App() {
         <div className="login-options-container">
           <img src={logo} alt="Logo" className="logo" />
           <h2>Camarines Norte State College Customer Feedback System</h2>
+          <br></br>
           <div className="button-container">
             <button onClick={handleCustomerClick}>
               <img src={customerLogo} alt="Customer Logo" />
@@ -90,6 +93,8 @@ function AppWithRouter() {
         <Route path="/employee-login" element={<EmployeeLogin2 />} />
         <Route path="/others-login" element={<OthersLogin />} />
         <Route path="/agency-instruct" element={<AgencyInstuct />} />
+        <Route path="/student-instruct" element={<StudentInstruct />} />
+        <Route path="/select-office" element={<SelectOffice />} />
         {/* Add other routes here as needed */}
       </Routes>
     </Router>
