@@ -16,6 +16,8 @@ import OthersLogin from './Otherslogin';
 import AgencyInstuct from './AgencyInstruct';
 import StudentInstruct from './StudentInterface/StudentInstruct';
 import SelectOffice from './StudentInterface/SelectOffice';
+import AdmissionOffice from './StudentInterface/AdmissionOffice';
+import GuidanceOffice from './StudentInterface/GuidanceOffice';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -95,6 +97,8 @@ function AppWithRouter() {
         <Route path="/agency-instruct" element={<AgencyInstuct />} />
         <Route path="/student-instruct" element={<StudentInstruct />} />
         <Route path="/select-office" element={<SelectOffice />} />
+        <Route path="/admission-office" element={<AdmissionOffice />} />
+        <Route path="/guidance-office" element={<GuidanceOffice />} />
         {/* Add other routes here as needed */}
       </Routes>
     </Router>

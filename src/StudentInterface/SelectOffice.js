@@ -1,10 +1,13 @@
 // src/StudentInterface/SelectOffice.js
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import './SelectOffice.css'
 
 function SelectOffice() {
+    const navigate = useNavigate();
+
     const [selectedOffice, setSelectedOffice] = useState('');
 
     const handleSelectionChange = (e) => {
@@ -14,6 +17,12 @@ function SelectOffice() {
     const handleSubmit = () => {
         if (selectedOffice) {
             alert(`Selected Office: ${selectedOffice}`);
+            if (selectedOffice === "Admission Office"){
+                navigate('/admission-office');
+            }
+            else if (selectedOffice === "Guidance Office"){
+                navigate('/guidance-office')
+            }
         } else {
             alert('Please select an office');
         }

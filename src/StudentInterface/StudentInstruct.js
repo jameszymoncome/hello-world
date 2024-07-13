@@ -1,10 +1,17 @@
 // src/StudentInterface/StudentInstruct.js
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import './StudentInstruct.css'
 
 function StudentInstruct(){
+  const navigate = useNavigate();
+
+  const handleNextBtn = () => {
+    navigate('/select-office');
+  };
+
     return (
         <div>
           <Header />
@@ -28,7 +35,7 @@ function StudentInstruct(){
                         <h5>1 &rarr; Very Dissatisfied</h5>
                 </div>
                 <div className='button-container-st'>
-                  <button className='next_btn'>Next</button>
+                  <button className='next_btn' onClick={handleNextBtn}>Next</button>
                 </div>
             </div>
           </div>

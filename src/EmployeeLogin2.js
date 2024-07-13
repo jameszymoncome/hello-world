@@ -1,11 +1,14 @@
 // src/EmployeeLogin2.js
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import './Login.css';
 import Header from './Header';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 
 function EmployeeLogin2({ onLogin }) {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,7 +25,7 @@ function EmployeeLogin2({ onLogin }) {
       const data = await response.json();
       if (response.ok) {
         alert('Login successful');
-        onLogin(username); // Call the onLogin prop to handle successful login
+        navigate('/student-instruct')
       } else {
         alert(data.error || 'Login failed');
       }
