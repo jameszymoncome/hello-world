@@ -1,12 +1,15 @@
 // src/StudentInterface/GuidanceOffice.js
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import './AdmissionOffice.css';
 import ratebar from '../images/RateBar.png';
 
 function GuidanceOffice() {
+    const navigate = useNavigate();
     const [step, setStep] = useState(1);
+    const [suggestion, setSuggestion] = useState('');
 
     const handleNext = () => {
         if (step < 3) {
@@ -18,7 +21,21 @@ function GuidanceOffice() {
         if (step > 1) {
             setStep(step - 1);
         }
+        else {
+            navigate('/select-office');
+        }
     };
+
+    const handleProceed = () => {
+        if (step > 2) {
+            setStep(step + 1);
+        }
+    };
+
+    const handleSuggestionChange = (e) => {
+        setSuggestion(e.target.value);
+    };
+
 
     return (
         <div>
@@ -112,12 +129,24 @@ function GuidanceOffice() {
                             </li>
                         </ol>
                     )}
+                    {step === 4 && (
+                        <div>
+                            <h3>Complaints, Comments, Suggestions</h3>
+                            <div className="suggestion-input">
+                                <textarea
+                                    value={suggestion}
+                                    onChange={handleSuggestionChange}
+                                    placeholder="Enter your suggestion here..."
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="button-container-st">
-                {step > 1 && <button className="back_btn" onClick={handleBack}>Back</button>}
+                <button className="back_btn" onClick={handleBack}>Back</button>
                 {step < 3 && <button className="next_btn" onClick={handleNext}>Next</button>}
-                {step === 3 && <button className="proceed_btn">Proceed</button>}
+                {step > 2 && <button className="proceed_btn" onClick={handleProceed}>Proceed</button>}
             </div>
             <Footer />
         </div>

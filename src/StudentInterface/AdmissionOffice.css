@@ -84,3 +84,45 @@ body {
 .radio-buttons label {
     margin-right: 140px; /* Add space between radio buttons */
 }
+
+.suggestion-input textarea {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 800px; /* Ensure the instruction takes the full width of the container */
+    height: 300px; /* Adjust height as needed */
+    text-align: left; /* Align text to the left */
+    vertical-align: top; /* Ensure text starts from the top */
+    resize: none; /* Prevent resizing */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+
+.fifth-container {
+    position: relative; /* Make this container the reference for absolute positioning */
+    margin-top: 100px;
+    text-align: left;
+    padding: 100px;
+    display: flex; /* Add display flex if you want to control the alignment of its children */
+    justify-content: flex-start;
+}
+
+.another-container {
+    position: absolute; /* Position absolutely within the relative container */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
