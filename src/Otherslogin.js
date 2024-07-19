@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import Header from './Header';
+import HeaderC from './HeaderC';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import { fetchAddresses } from './utils/fetchAddresses';
@@ -54,7 +54,7 @@ function OthersLogin({ onLogin }) {
 
   return (
     <div>
-      <Header />
+      <HeaderC />
       <div className='signup_title'>
         <h1>Personal Information</h1>
       </div>

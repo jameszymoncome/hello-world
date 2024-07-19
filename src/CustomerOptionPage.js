@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from './Header';
+import HeaderC from './HeaderC';
 import Footer from './Footer';
 import logo from './images/logo.png';
 import customerLogo from './images/customer-logo.png';
@@ -24,7 +24,7 @@ function CustomerOptionPage() {
 
   return (
     <div className="CustomerOptionPage">
-      <Header />
+      <HeaderC />
       <div className="content">
         <img src={logo} alt="Logo" className="logo" />
         <h1>CUSTOMERS</h1>

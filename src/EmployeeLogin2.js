@@ -1,13 +1,15 @@
 // src/EmployeeLogin2.js
-import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import Header from './Header';
+import HeaderC from './HeaderC';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import { UserContext } from './UserContext';
 
-function EmployeeLogin2({ onLogin }) {
+function EmployeeLogin2() {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext); // Use context to set user
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -25,7 +27,8 @@ function EmployeeLogin2({ onLogin }) {
       const data = await response.json();
       if (response.ok) {
         alert('Login successful');
-        navigate('/student-instruct')
+        setUser(username); // Set the username in context
+        navigate('/student-instruct');
       } else {
         alert(data.error || 'Login failed');
       }
@@ -36,7 +39,7 @@ function EmployeeLogin2({ onLogin }) {
 
   return (
     <div>
-      <Header />
+      <HeaderC />
       <div className='signup_title'>
         <h1>Login</h1>
       </div>

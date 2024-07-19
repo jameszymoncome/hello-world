@@ -1,18 +1,27 @@
 // src/StudentInterface/GuidanceOffice.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {useNavigate} from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import './AdmissionOffice.css';
 import ratebar from '../images/RateBar.png';
+import { UserContext } from '../UserContext';
 
 function GuidanceOffice() {
+    const { user } = useContext(UserContext);
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [suggestion, setSuggestion] = useState('');
+    const [ratings, setRatings] = useState({
+        rate1: 0,
+        rate2: 0,
+        rate3: 0,
+        rate4: 0,
+        rate5: 0,
+    });
 
     const handleNext = () => {
-        if (step < 3) {
+        if (step < 4) {
             setStep(step + 1);
         }
     };
@@ -20,22 +29,64 @@ function GuidanceOffice() {
     const handleBack = () => {
         if (step > 1) {
             setStep(step - 1);
-        }
-        else {
+        } else {
             navigate('/select-office');
         }
     };
 
-    const handleProceed = () => {
-        if (step > 2) {
-            setStep(step + 1);
-        }
+    const handleReview = () => {
+        setStep(5);
     };
+
+    const handleAnother = () => {
+        navigate('/guidance-office');
+    };
+
+    const handleProceed = async () => {
+        if (step === 4) {
+          try {
+            const payload = {
+              username: user,
+              ratings,
+              suggestion,
+              office: 'Guidance Office' // Replace with actual office value
+            };
+      
+            console.log('Sending request with:', payload); // Log payload
+      
+            const response = await fetch('http://localhost:5000/api/submit-feedback', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+      
+            if (response.ok) {
+              setStep(5);
+            } else {
+              console.error('Failed to submit feedback:', response.status, response.statusText);
+              const errorData = await response.json();
+              console.error('Error data:', errorData);
+              alert('Failed to submit feedback. Please try again.');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please check the console for details.');
+          }
+        } else if (step === 5) {
+          navigate('/customer-options');
+        }
+      };
 
     const handleSuggestionChange = (e) => {
         setSuggestion(e.target.value);
     };
 
+    const handleRatingChange = (e, rateName) => {
+        setRatings({
+            ...ratings,
+            [rateName]: parseInt(e.target.value),
+        });
+    };
 
     return (
         <div>
@@ -52,7 +103,13 @@ function GuidanceOffice() {
                                     <div className="radio-buttons">
                                         {[1, 2, 3, 4, 5].map((num) => (
                                             <label key={num}>
-                                                <input type="radio" name="rate1" value={num} />
+                                                <input
+                                                    type="radio"
+                                                    name="rate1"
+                                                    value={num}
+                                                    checked={ratings.rate1 === num}
+                                                    onChange={(e) => handleRatingChange(e, 'rate1')}
+                                                />
                                                 {num}
                                             </label>
                                         ))}
@@ -67,7 +124,13 @@ function GuidanceOffice() {
                                     <div className="radio-buttons">
                                         {[1, 2, 3, 4, 5].map((num) => (
                                             <label key={num}>
-                                                <input type="radio" name="rate2" value={num} />
+                                                <input
+                                                    type="radio"
+                                                    name="rate2"
+                                                    value={num}
+                                                    checked={ratings.rate2 === num}
+                                                    onChange={(e) => handleRatingChange(e, 'rate2')}
+                                                />
                                                 {num}
                                             </label>
                                         ))}
@@ -86,7 +149,13 @@ function GuidanceOffice() {
                                     <div className="radio-buttons">
                                         {[1, 2, 3, 4, 5].map((num) => (
                                             <label key={num}>
-                                                <input type="radio" name="rate3" value={num} />
+                                                <input
+                                                    type="radio"
+                                                    name="rate3"
+                                                    value={num}
+                                                    checked={ratings.rate3 === num}
+                                                    onChange={(e) => handleRatingChange(e, 'rate3')}
+                                                />
                                                 {num}
                                             </label>
                                         ))}
@@ -101,7 +170,13 @@ function GuidanceOffice() {
                                     <div className="radio-buttons">
                                         {[1, 2, 3, 4, 5].map((num) => (
                                             <label key={num}>
-                                                <input type="radio" name="rate4" value={num} />
+                                                <input
+                                                    type="radio"
+                                                    name="rate4"
+                                                    value={num}
+                                                    checked={ratings.rate4 === num}
+                                                    onChange={(e) => handleRatingChange(e, 'rate4')}
+                                                />
                                                 {num}
                                             </label>
                                         ))}
@@ -120,7 +195,13 @@ function GuidanceOffice() {
                                     <div className="radio-buttons">
                                         {[1, 2, 3, 4, 5].map((num) => (
                                             <label key={num}>
-                                                <input type="radio" name="rate5" value={num} />
+                                                <input
+                                                    type="radio"
+                                                    name="rate5"
+                                                    value={num}
+                                                    checked={ratings.rate5 === num}
+                                                    onChange={(e) => handleRatingChange(e, 'rate5')}
+                                                />
                                                 {num}
                                             </label>
                                         ))}
@@ -141,12 +222,34 @@ function GuidanceOffice() {
                             </div>
                         </div>
                     )}
+                    {step === 5 && (
+                        <div className='fifth-container'>
+                            <div className='another-container'>
+                                <h2>Thank you for your Feedback!!!</h2>
+                                <br />
+                                <button className="link-button" onClick={handleAnother}>Fill in the form again</button>
+                                <br />
+                                <button className="link-button" onClick={handleReview}>Review Response</button>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            </div>
-            <div className="button-container-st">
-                <button className="back_btn" onClick={handleBack}>Back</button>
-                {step < 3 && <button className="next_btn" onClick={handleNext}>Next</button>}
-                {step > 2 && <button className="proceed_btn" onClick={handleProceed}>Proceed</button>}
+                <div className="navigation-buttons">
+                {step !== 5 && (
+                    <button onClick={handleBack}>
+                        {step === 1 ? 'Back to Office Selection' : 'Back'}
+                    </button>
+                    )}
+                    {step < 4 ? (
+                    <button onClick={handleNext}>Next</button>
+                    ) : (
+                    <button onClick={handleProceed}>
+                        {step === 4 ? 'Submit Feedback' : step === 5 ? 'Home' : 'Proceed'}
+                    </button>
+                    )}
+
+
+                </div>
             </div>
             <Footer />
         </div>

@@ -1,7 +1,7 @@
 // src/StudentLogin.js
 import React, { useState } from 'react';
 import './Login.css';
-import Header from './Header';
+import HeaderC from './HeaderC';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ function StudentLogin({ onLogin }) {
 
   return (
     <div>
-      <Header />
+      <HeaderC />
       <div className='signup_title'>
         <h1>Sign-Up</h1>
       </div>
