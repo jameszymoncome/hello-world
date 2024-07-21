@@ -1,40 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import HeaderC from './HeaderC';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import { fetchAddresses } from './utils/fetchAddresses';
+import { UserContext } from './UserContext';
 
 function OthersLogin({ onLogin }) {
   const [username, setUsername] = useState('');
   const [address, setAddress] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [type, setType] = useState('');
+  const { setUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    navigate('/agency-interface');
+    // e.preventDefault();
 
-    try {
-      const response = await fetch('http://localhost:5000/api/login-others', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, address, type })
-      });
+    // try {
+    //   const response = await fetch('http://localhost:5000/api/login-others', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ username, address, type })
+    //   });
 
-      const data = await response.json();
-      if (response.ok) {
-        alert(data.message);
-        onLogin(username); // Call the onLogin prop to handle successful login
-        navigate('/agency-instruct'); // Navigate after successful login
-      } else {
-        alert(data.error || 'Login failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    //   const data = await response.json();
+    //   if (response.ok) {
+    //     alert(data.message);
+    //     setUser(username); // Call the onLogin prop to handle successful login
+    //     navigate('/agency-interface'); // Navigate after successful login
+    //   } else {
+    //     alert(data.error || 'Login failed');
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    // }
   };
 
   const handleAddressChange = async (e) => {

@@ -69,9 +69,10 @@ body {
 }
 
 .ratebar {
-    width: 700px;
+    width: 710px;
     margin-top: 20px;
-    height: 40px;
+    height: 35px;
+    margin-left: 15px;
 }
 
 .radio-buttons {

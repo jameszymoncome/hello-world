@@ -17,7 +17,7 @@
     padding: 20px 30px; /* Adjust padding to control the space inside the box */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 500px; /* Ensure the instruction takes the full width of the container */
+    width: 400px; /* Ensure the instruction takes the full width of the container */
     box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
@@ -26,7 +26,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-start; /* Align options to the left */
-    padding: 10px 0; /* Add padding to create space between options */
+    padding: 5px 0; /* Add padding to create space between options */
     border-bottom: 1px solid #ccc; /* Add a bottom border to create a separator line */
 }
 
@@ -43,7 +43,7 @@
     display: flex;
     justify-content: flex-end; /* Align button to the right */
     width: 100%;
-    margin-top: 20px; /* Add some space above the button container */
+    margin-top: 5px; /* Add some space above the button container */
 }
 
 .button-container-ss button {

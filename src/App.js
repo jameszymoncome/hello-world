@@ -13,12 +13,15 @@ import StudentLogin2 from './StudentLogin2';
 import EmployeeLogin from './EmployeeLogin';
 import EmployeeLogin2 from './EmployeeLogin2';
 import OthersLogin from './Otherslogin';
-import AgencyInstuct from './AgencyInstruct';
 import StudentInstruct from './StudentInterface/StudentInstruct';
 import SelectOffice from './StudentInterface/SelectOffice';
 import AdmissionOffice from './StudentInterface/AdmissionOffice';
 import GuidanceOffice from './StudentInterface/GuidanceOffice';
 import { UserProvider } from './UserContext';
+import AgencyInterface from './OthersInterface/AgencyInterface';
+import AgencyInformation from './OthersInterface/AgencyInformation';
+import Survey from './OthersInterface/Survey';
+import ClientSatisfactionSurvey from './OthersInterface/ClientSatisfactionSurvey';
 
 function App() {
   const [showStartPage, setShowStartPage] = useState(true);
@@ -85,12 +88,15 @@ function AppWithRouter() {
           <Route path="/student-login" element={<StudentLogin2 />} />
           <Route path="/employee-login" element={<EmployeeLogin2 />} />
           <Route path="/others-login" element={<OthersLogin />} />
-          <Route path="/agency-instruct" element={<AgencyInstuct />} />
           <Route path="/student-instruct" element={<StudentInstruct />} />
           <Route path="/select-office" element={<SelectOffice />} />
           <Route path="/admission-office" element={<AdmissionOffice />} />
           <Route path="/guidance-office" element={<GuidanceOffice />} />
           <Route path="/start-page" element={<StartPage />} />
+          <Route path="/agency-interface" element={<AgencyInterface />} />
+          <Route path="/agency-information" element={<AgencyInformation />} />
+          <Route path="/survey" element={<Survey />} />
+          <Route path="/client-satisfaction-survey" element={<ClientSatisfactionSurvey />} />
           {/* Add other routes here as needed */}
         </Routes>
       </Router>
