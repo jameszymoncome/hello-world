@@ -17,7 +17,18 @@ function OthersLogin({ onLogin }) {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    navigate('/agency-interface');
+    if (type === "Agency"){
+      navigate('/agency-interface');
+    }
+
+    else if (type === "Participant"){
+      navigate('/participant-instruction');
+    }
+
+    else {
+      //dito client
+    }
+    
     // e.preventDefault();
 
     // try {

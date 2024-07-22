@@ -22,6 +22,9 @@ import AgencyInterface from './OthersInterface/AgencyInterface';
 import AgencyInformation from './OthersInterface/AgencyInformation';
 import Survey from './OthersInterface/Survey';
 import ClientSatisfactionSurvey from './OthersInterface/ClientSatisfactionSurvey';
+import ParticipantInstruction from './OthersInterface/ParticipantInstruction';
+import ParticipantInformation from './OthersInterface/ParticipantInformation';
+import ParticipantSurvey from './OthersInterface/ParticipantSurvey';
 
 function App() {
   const [showStartPage, setShowStartPage] = useState(true);
@@ -97,6 +100,10 @@ function AppWithRouter() {
           <Route path="/agency-information" element={<AgencyInformation />} />
           <Route path="/survey" element={<Survey />} />
           <Route path="/client-satisfaction-survey" element={<ClientSatisfactionSurvey />} />
+          <Route path="/participant-instruction" element={<ParticipantInstruction />} />
+          <Route path="/participant-information" element={<ParticipantInformation />} />
+          <Route path="/participant-survey" element={<ParticipantSurvey />} />
+          
           {/* Add other routes here as needed */}
         </Routes>
       </Router>

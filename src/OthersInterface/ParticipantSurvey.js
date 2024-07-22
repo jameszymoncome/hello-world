@@ -1,12 +1,12 @@
-// src/Survey.js
+// src/ParticipantSurvey.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import ratebar from '../images/RateBar.png';
-import './Survey.css';
+import './ParticipantSurvey.css';
 
-function Survey() {
+function ParticipantSurvey() {
     const navigate = useNavigate();
     const [currentSet, setCurrentSet] = useState(0);
     const [ratings, setRatings] = useState({});
@@ -96,4 +96,4 @@ function Survey() {
     );
 }
 
-export default Survey;
+export default ParticipantSurvey;

@@ -1,0 +1,39 @@
+.title{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.instruction-container {
+    margin-top: 50px;
+}
+
+.instruction{
+    text-align: justify;
+    padding: 25px;
+}
+
+.rating-container{
+    margin: 20px 0px 0px 20px;
+    text-align: left;
+}
+
+.rating{
+    margin: 20px 0px 0px 75px;
+}
+
+.rating .number {
+    margin-right: 10px; /* Adjust the spacing between the number and the image */
+}
+
+.rating .text {
+    margin-left: 10px; /* Adjust the spacing between the image and the text */
+}
+
+.color{
+    width: 12px;
+    height: 12px;
+}
+
+.button-container-st{
+    justify-content: flex-end;
+}
